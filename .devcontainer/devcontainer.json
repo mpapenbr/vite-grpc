@@ -1,0 +1,65 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
+{
+  "name": "Node.js & TypeScript",
+  // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:1-20-bullseye",
+
+  // Set *default* container specific settings.json values on container create.
+  "customizations": {
+    "vscode": {
+      "settings": {
+        // "terminal.integrated.shell.linux": "/bin/bash",
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "prettier.printWidth": 120,
+        "editor.tabSize": 2,
+        "editor.formatOnSave": true,
+        "[typescript]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode",
+          "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+          }
+        },
+        "[typescriptreact]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode",
+          "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+          }
+        }
+      },
+      // Add the IDs of extensions you want installed when the container is created.
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "eamodio.gitlens",
+        "esbenp.prettier-vscode",
+        "github.vscode-pull-request-github",
+        "sleistner.vscode-fileutils",
+        "patbenatar.advanced-new-file",
+        "formulahendry.auto-rename-tag",
+        "GitHub.copilot"
+      ]
+    }
+  },
+
+  "containerEnv": {
+    "TZ": "Europe/Berlin"
+  },
+  "features": {
+    // this is not working atm (2023-10-02) The container cannot be built
+    // as a workaround use the installTinygo.sh (execute via sudo)
+    // "ghcr.io/devcontainers-community/features/tinygo": {
+    //   "version": "latest"
+    // }
+    // "ghcr.io/devcontainers/features/go": {}
+  },
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  "forwardPorts": [3000],
+
+  // Use 'postCreateCommand' to run commands after the container is created.
+  "postCreateCommand": "./devinit.sh",
+
+  // Uncomment to connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.
+  "remoteUser": "node",
+  // "runArgs": ["--add-host=host.docker.internal:host-gateway"]
+  "runArgs": ["--network=host"]
+}
