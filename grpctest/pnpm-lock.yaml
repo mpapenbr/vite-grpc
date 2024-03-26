@@ -6,11 +6,11 @@ settings:
 
 dependencies:
   '@buf/mpapenbr_testrepo.bufbuild_es':
-    specifier: 1.8.0-00000000000000-42490533785a.1
-    version: 1.8.0-00000000000000-42490533785a.1(@bufbuild/protobuf@1.8.0)
+    specifier: 1.8.0-00000000000000-8bb92e0a81f7.2
+    version: 1.8.0-00000000000000-8bb92e0a81f7.2(@bufbuild/protobuf@1.8.0)
   '@buf/mpapenbr_testrepo.connectrpc_es':
-    specifier: 1.4.0-00000000000000-42490533785a.1
-    version: 1.4.0-00000000000000-42490533785a.1(@bufbuild/protobuf@1.8.0)(@connectrpc/connect@1.4.0)
+    specifier: 1.4.0-00000000000000-8bb92e0a81f7.2
+    version: 1.4.0-00000000000000-8bb92e0a81f7.2(@bufbuild/protobuf@1.8.0)(@connectrpc/connect@1.4.0)
   '@connectrpc/connect':
     specifier: ^1.4.0
     version: 1.4.0(@bufbuild/protobuf@1.8.0)
@@ -287,28 +287,28 @@ packages:
       to-fast-properties: 2.0.0
     dev: true
 
-  /@buf/mpapenbr_testrepo.bufbuild_es@1.7.2-00000000000000-42490533785a.1(@bufbuild/protobuf@1.8.0):
-    resolution: {tarball: https://buf.build/gen/npm/v1/@buf/mpapenbr_testrepo.bufbuild_es/-/mpapenbr_testrepo.bufbuild_es-1.7.2-00000000000000-42490533785a.1.tgz}
+  /@buf/mpapenbr_testrepo.bufbuild_es@1.7.2-00000000000000-8bb92e0a81f7.1(@bufbuild/protobuf@1.8.0):
+    resolution: {tarball: https://buf.build/gen/npm/v1/@buf/mpapenbr_testrepo.bufbuild_es/-/mpapenbr_testrepo.bufbuild_es-1.7.2-00000000000000-8bb92e0a81f7.1.tgz}
     peerDependencies:
       '@bufbuild/protobuf': ^1.7.2
     dependencies:
       '@bufbuild/protobuf': 1.8.0
     dev: false
 
-  /@buf/mpapenbr_testrepo.bufbuild_es@1.8.0-00000000000000-42490533785a.1(@bufbuild/protobuf@1.8.0):
-    resolution: {tarball: https://buf.build/gen/npm/v1/@buf/mpapenbr_testrepo.bufbuild_es/-/mpapenbr_testrepo.bufbuild_es-1.8.0-00000000000000-42490533785a.1.tgz}
+  /@buf/mpapenbr_testrepo.bufbuild_es@1.8.0-00000000000000-8bb92e0a81f7.2(@bufbuild/protobuf@1.8.0):
+    resolution: {tarball: https://buf.build/gen/npm/v1/@buf/mpapenbr_testrepo.bufbuild_es/-/mpapenbr_testrepo.bufbuild_es-1.8.0-00000000000000-8bb92e0a81f7.2.tgz}
     peerDependencies:
       '@bufbuild/protobuf': ^1.8.0
     dependencies:
       '@bufbuild/protobuf': 1.8.0
     dev: false
 
-  /@buf/mpapenbr_testrepo.connectrpc_es@1.4.0-00000000000000-42490533785a.1(@bufbuild/protobuf@1.8.0)(@connectrpc/connect@1.4.0):
-    resolution: {tarball: https://buf.build/gen/npm/v1/@buf/mpapenbr_testrepo.connectrpc_es/-/mpapenbr_testrepo.connectrpc_es-1.4.0-00000000000000-42490533785a.1.tgz}
+  /@buf/mpapenbr_testrepo.connectrpc_es@1.4.0-00000000000000-8bb92e0a81f7.2(@bufbuild/protobuf@1.8.0)(@connectrpc/connect@1.4.0):
+    resolution: {tarball: https://buf.build/gen/npm/v1/@buf/mpapenbr_testrepo.connectrpc_es/-/mpapenbr_testrepo.connectrpc_es-1.4.0-00000000000000-8bb92e0a81f7.2.tgz}
     peerDependencies:
       '@connectrpc/connect': ^1.4.0
     dependencies:
-      '@buf/mpapenbr_testrepo.bufbuild_es': 1.7.2-00000000000000-42490533785a.1(@bufbuild/protobuf@1.8.0)
+      '@buf/mpapenbr_testrepo.bufbuild_es': 1.7.2-00000000000000-8bb92e0a81f7.1(@bufbuild/protobuf@1.8.0)
       '@connectrpc/connect': 1.4.0(@bufbuild/protobuf@1.8.0)
     transitivePeerDependencies:
       - '@bufbuild/protobuf'

@@ -9,8 +9,9 @@ import {
   createGrpcWebTransport,
 } from "@connectrpc/connect-web";
 
-import { GetEventRequest } from "@buf/mpapenbr_testrepo.bufbuild_es/testrepo/events/v1/event_service_pb";
-import { EventService } from "@buf/mpapenbr_testrepo.connectrpc_es/testrepo/events/v1/event_service_connect";
+import { GetEventRequest } from "@buf/mpapenbr_testrepo.bufbuild_es/testrepo/event/v1/event_service_pb";
+import { EventService } from "@buf/mpapenbr_testrepo.connectrpc_es/testrepo/event/v1/event_service_connect";
+import { ProviderService } from "@buf/mpapenbr_testrepo.connectrpc_es/testrepo/provider/v1/provider_service_connect";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -23,21 +24,26 @@ function App() {
     baseUrl: "http://localhost:8084",
     useBinaryFormat: true,
   });
-  const client = createPromiseClient(EventService, transportGrpc);
+  const eventClient = createPromiseClient(EventService, transportGrpc);
+  const providerClient = createPromiseClient(ProviderService, transportGrpc);
 
   const singleEventId = async () => {
     console.log("rpc single");
 
-    client.getEvent(GetEventRequest.fromJson({ id: 218 })).then((res) => {
-      const j = res.toJsonString();
-      console.log(j);
-    });
+    eventClient
+      .getEvent(GetEventRequest.fromJson({ eventSelector: { id: 218 } }))
+      .then((res) => {
+        const j = res.toJsonString();
+        console.log(j);
+      });
   };
   const singleEventKey = async () => {
     console.log("rpc single");
-    client
+    eventClient
       .getEvent(
-        GetEventRequest.fromJson({ key: "cadbf65e45491784a4198def5b80dc04" })
+        GetEventRequest.fromJson({
+          eventSelector: { key: "cadbf65e45491784a4198def5b80dc04" },
+        })
       )
       .then((res) => {
         const j = res.toJsonString();
@@ -46,7 +52,13 @@ function App() {
   };
   const streamEvent = async () => {
     console.log("rpc stream");
-    for await (const res of client.getEvents({})) {
+    for await (const res of eventClient.getEvents({})) {
+      console.log(res.toJsonString());
+    }
+  };
+  const showProviderList = async () => {
+    console.log("show provider list");
+    for await (const res of providerClient.listLiveEvents({})) {
       console.log(res.toJsonString());
     }
   };
@@ -68,6 +80,7 @@ function App() {
         <button onClick={() => singleEventId()}>do single event (id)</button>
         <button onClick={() => singleEventKey()}>do single event (key)</button>
         <button onClick={() => streamEvent()}>do stream event</button>
+        <button onClick={() => showProviderList()}>list provider</button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>

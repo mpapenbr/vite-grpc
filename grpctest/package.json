@@ -10,8 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@buf/mpapenbr_testrepo.bufbuild_es": "1.8.0-00000000000000-42490533785a.1",
-    "@buf/mpapenbr_testrepo.connectrpc_es": "1.4.0-00000000000000-42490533785a.1",
+    "@buf/mpapenbr_testrepo.bufbuild_es": "1.8.0-00000000000000-8bb92e0a81f7.2",
+    "@buf/mpapenbr_testrepo.connectrpc_es": "1.4.0-00000000000000-8bb92e0a81f7.2",
     "@connectrpc/connect": "^1.4.0",
     "@connectrpc/connect-web": "^1.4.0",
     "add": "^2.0.6",
