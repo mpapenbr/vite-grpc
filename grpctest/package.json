@@ -10,12 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@buf/mpapenbr_testrepo.bufbuild_es": "1.8.0-00000000000000-8bb92e0a81f7.2",
-    "@buf/mpapenbr_testrepo.connectrpc_es": "1.4.0-00000000000000-8bb92e0a81f7.2",
+    "@buf/mpapenbr_testrepo.bufbuild_es": "1.8.0-00000000000000-0a070eed3e9a.2",
+    "@buf/mpapenbr_testrepo.connectrpc_es": "1.4.0-00000000000000-0a070eed3e9a.2",
     "@connectrpc/connect": "^1.4.0",
     "@connectrpc/connect-web": "^1.4.0",
-    "add": "^2.0.6",
-    "pnpm": "^8.15.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
