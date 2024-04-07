@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@buf/mpapenbr_testrepo.bufbuild_es": "1.8.0-00000000000000-0a070eed3e9a.2",
+    "@buf/mpapenbr_testrepo.community_timostamm-protobuf-ts": "2.9.4-00000000000000-0a070eed3e9a.2",
     "@buf/mpapenbr_testrepo.connectrpc_es": "1.4.0-00000000000000-0a070eed3e9a.2",
     "@connectrpc/connect": "^1.4.0",
     "@connectrpc/connect-web": "^1.4.0",

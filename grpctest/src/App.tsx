@@ -1,24 +1,25 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 
-import { createPromiseClient, createCallbackClient } from "@connectrpc/connect";
+import { createCallbackClient, createPromiseClient } from "@connectrpc/connect";
 import {
   createConnectTransport,
   createGrpcWebTransport,
 } from "@connectrpc/connect-web";
 
-import { GetEventRequest } from "@buf/mpapenbr_testrepo.bufbuild_es/testrepo/event/v1/event_service_pb";
-import { EventService } from "@buf/mpapenbr_testrepo.connectrpc_es/testrepo/event/v1/event_service_connect";
 import {
   AnalysisComponent,
   LiveAnalysisSelRequest,
   LiveRaceStateRequest,
 } from "@buf/mpapenbr_testrepo.bufbuild_es/testrepo/livedata/v1/live_service_pb";
 import { ProviderService } from "@buf/mpapenbr_testrepo.connectrpc_es/testrepo/provider/v1/provider_service_connect";
-import { LiveDataService } from "@buf/mpapenbr_testrepo.connectrpc_es/testrepo/livedata/v1/live_service_connect";
 
+import { LiveAnalysisSelResponse } from "@buf/mpapenbr_testrepo.community_timostamm-protobuf-ts/testrepo/livedata/v1/live_service_pb";
+import { ProviderServiceClient } from "@buf/mpapenbr_testrepo.community_timostamm-protobuf-ts/testrepo/provider/v1/provider_service_pb.client";
+import { LiveDataService } from "@buf/mpapenbr_testrepo.connectrpc_es/testrepo/livedata/v1/live_service_connect";
+import { GrpcWebFetchTransport } from "@protobuf-ts/grpcweb-transport";
 function App() {
   const [count, setCount] = useState(0);
 
@@ -28,45 +29,41 @@ function App() {
   });
   const transportGrpc = createGrpcWebTransport({
     baseUrl: "http://localhost:8084",
-    useBinaryFormat: true,
   });
-  const eventClient = createPromiseClient(EventService, transportGrpc);
-  const providerClient = createPromiseClient(ProviderService, transportGrpc);
+
+  let grpcWebTransport = new GrpcWebFetchTransport({
+    baseUrl: "http://localhost:8084",
+    format: "binary",
+  });
+
   const livedataClient = createCallbackClient(LiveDataService, transportGrpc);
+  const providerClient = new ProviderServiceClient(grpcWebTransport);
+  const providerClientConnect = createPromiseClient(
+    ProviderService,
+    transportGrpc
+  );
+  // const livedataClient = createCallbackClient(LiveDataService, transportGrpc);
 
   const singleEventId = async () => {
     console.log("rpc single");
-
-    eventClient
-      .getEvent(GetEventRequest.fromJson({ eventSelector: { id: 218 } }))
-      .then((res) => {
-        const j = res.toJsonString();
-        console.log(j);
-      });
   };
   const singleEventKey = async () => {
     console.log("rpc single");
-    eventClient
-      .getEvent(
-        GetEventRequest.fromJson({
-          eventSelector: { key: "cadbf65e45491784a4198def5b80dc04" },
-        })
-      )
-      .then((res) => {
-        const j = res.toJsonString();
-        console.log(j);
-      });
   };
   const streamEvent = async () => {
     console.log("rpc stream");
-    for await (const res of eventClient.getEvents({})) {
-      res.console.log(res.toJsonString());
-    }
   };
   const showProviderList = async () => {
     console.log("show provider list");
-    const events = await providerClient.listLiveEvents({});
-    console.log(events.toJsonString());
+    let { events } = await providerClient.listLiveEvents({}).response;
+    console.log(events);
+
+    {
+      const { events } = await providerClientConnect.listLiveEvents({});
+      for (const event of events) {
+        console.log(event.event);
+      }
+    }
   };
 
   var liveAnalysisCancel;
@@ -82,6 +79,8 @@ function App() {
         },
       }),
       (res) => {
+        const x: LiveAnalysisSelResponse = res;
+
         console.log(
           `analysis msg: ${analysisCount}: ${res.toJsonString().length}`
         );

@@ -8,6 +8,9 @@ dependencies:
   '@buf/mpapenbr_testrepo.bufbuild_es':
     specifier: 1.8.0-00000000000000-0a070eed3e9a.2
     version: 1.8.0-00000000000000-0a070eed3e9a.2(@bufbuild/protobuf@1.8.0)
+  '@buf/mpapenbr_testrepo.community_timostamm-protobuf-ts':
+    specifier: 2.9.4-00000000000000-0a070eed3e9a.2
+    version: 2.9.4-00000000000000-0a070eed3e9a.2(@protobuf-ts/runtime-rpc@2.9.4)(@protobuf-ts/runtime@2.9.4)
   '@buf/mpapenbr_testrepo.connectrpc_es':
     specifier: 1.4.0-00000000000000-0a070eed3e9a.2
     version: 1.4.0-00000000000000-0a070eed3e9a.2(@bufbuild/protobuf@1.8.0)(@connectrpc/connect@1.4.0)
@@ -296,6 +299,16 @@ packages:
       '@bufbuild/protobuf': ^1.8.0
     dependencies:
       '@bufbuild/protobuf': 1.8.0
+    dev: false
+
+  /@buf/mpapenbr_testrepo.community_timostamm-protobuf-ts@2.9.4-00000000000000-0a070eed3e9a.2(@protobuf-ts/runtime-rpc@2.9.4)(@protobuf-ts/runtime@2.9.4):
+    resolution: {tarball: https://buf.build/gen/npm/v1/@buf/mpapenbr_testrepo.community_timostamm-protobuf-ts/-/mpapenbr_testrepo.community_timostamm-protobuf-ts-2.9.4-00000000000000-0a070eed3e9a.2.tgz}
+    peerDependencies:
+      '@protobuf-ts/runtime': ^2.9.4
+      '@protobuf-ts/runtime-rpc': ^2.9.4
+    dependencies:
+      '@protobuf-ts/runtime': 2.9.4
+      '@protobuf-ts/runtime-rpc': 2.9.4
     dev: false
 
   /@buf/mpapenbr_testrepo.connectrpc_es@1.4.0-00000000000000-0a070eed3e9a.2(@bufbuild/protobuf@1.8.0)(@connectrpc/connect@1.4.0):
@@ -645,6 +658,16 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.17.1
     dev: true
+
+  /@protobuf-ts/runtime-rpc@2.9.4:
+    resolution: {integrity: sha512-y9L9JgnZxXFqH5vD4d7j9duWvIJ7AShyBRoNKJGhu9Q27qIbchfzli66H9RvrQNIFk5ER7z1Twe059WZGqERcA==}
+    dependencies:
+      '@protobuf-ts/runtime': 2.9.4
+    dev: false
+
+  /@protobuf-ts/runtime@2.9.4:
+    resolution: {integrity: sha512-vHRFWtJJB/SiogWDF0ypoKfRIZ41Kq+G9cEFj6Qm1eQaAhJ1LDFvgZ7Ja4tb3iLOQhz0PaoPnnOijF1qmEqTxg==}
+    dev: false
 
   /@rollup/rollup-android-arm-eabi@4.14.0:
     resolution: {integrity: sha512-jwXtxYbRt1V+CdQSy6Z+uZti7JF5irRKF8hlKfEnF/xJpcNGuuiZMBvuoYM+x9sr9iWGnzrlM0+9hvQ1kgkf1w==}

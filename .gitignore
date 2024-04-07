@@ -11,3 +11,5 @@
 .gitconfig.local*
 .npmrc
 .env
+
+node_modules/*

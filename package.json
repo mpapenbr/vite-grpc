@@ -1,0 +1,5 @@
+{
+	"dependencies": {
+		"@protobuf-ts/grpcweb-transport": "^2.9.4"
+	}
+}
